@@ -4,10 +4,178 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Maedeh Darsaraee</title>
+    <style>
+      :root{
+        --bg:#0b0f19;
+        --card: rgba(255,255,255,.04);
+        --border: rgba(255,255,255,.12);
+        --text:#e9eefc;
+        --muted:#a9b5d3;
+        --accent:#7aa2ff;
+        --accent2:#7effc4;
+      }
+
+      *{ box-sizing:border-box; }
+      html,body{ margin:0; padding:0; }
+      body{
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+        background:
+          radial-gradient(900px 500px at 20% 10%, rgba(122,162,255,.18), transparent 60%),
+          radial-gradient(900px 500px at 80% 0%, rgba(126,255,196,.12), transparent 55%),
+          var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      .container{ width:min(980px, 92vw); margin:0 auto; }
+      header{
+        display:flex; align-items:center; justify-content:space-between;
+        padding: 22px 0;
+      }
+      .brand{ font-weight:800; letter-spacing:.2px; }
+      nav a{
+        color: var(--muted);
+        text-decoration:none;
+        margin-left: 14px;
+        padding: 8px 10px;
+        border-radius: 12px;
+      }
+      nav a:hover{ color: var(--text); background: rgba(255,255,255,.05); }
+
+      .hero{ padding: 26px 0 10px; }
+      h1{ margin:0 0 8px; font-size: clamp(2rem, 4vw, 3rem); }
+      .lead{ margin:0 0 16px; color: var(--muted); font-size: 1.05rem; }
+
+      .btns{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 14px; }
+      .btn, .btn-outline{
+        display:inline-block;
+        padding: 10px 14px;
+        border-radius: 14px;
+        text-decoration:none;
+        font-weight:700;
+      }
+      .btn{
+        background: linear-gradient(135deg, var(--accent), var(--accent2));
+        color:#07101f;
+      }
+      .btn-outline{
+        border:1px solid var(--border);
+        color: var(--text);
+        background: rgba(255,255,255,.03);
+      }
+      .btn-outline:hover{ border-color: rgba(255,255,255,.22); }
+
+      section{
+        margin-top: 16px;
+        padding: 18px;
+        border: 1px solid var(--border);
+        background: var(--card);
+        border-radius: 18px;
+        backdrop-filter: blur(6px);
+      }
+      section h2{ margin:0 0 8px; font-size: 1.2rem; }
+      p{ margin: 8px 0; color: var(--text); }
+      .muted{ color: var(--muted); }
+
+      .grid{
+        margin-top: 16px;
+        display:grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+      }
+      .tile{
+        border:1px solid var(--border);
+        background: rgba(255,255,255,.03);
+        border-radius: 18px;
+        padding: 16px;
+      }
+      .tile h3{ margin:0 0 6px; font-size: 1.05rem; }
+      .tile ul{ margin: 8px 0 0; padding-left: 18px; color: var(--muted); }
+
+      footer{ padding: 28px 0 40px; color: var(--muted); }
+
+      @media (max-width: 760px){
+        header{ flex-direction:column; align-items:flex-start; gap:10px; }
+        nav a{ margin-left:0; margin-right: 8px; }
+        .grid{ grid-template-columns: 1fr; }
+      }
+    </style>
   </head>
 
   <body>
-    <h1>Maedeh Darsaraee</h1>
-    <p>Cheminformatics • Target prediction • Molecular machine learning</p>
+    <div class="container">
+      <header>
+        <div class="brand">Maedeh Darsaraee</div>
+        <nav>
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#publications">Publications</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </header>
+
+      <main>
+        <div class="hero">
+          <h1>Maedeh Darsaraee</h1>
+          <p class="lead">Cheminformatics • Target prediction • Molecular machine learning</p>
+          <div class="btns">
+            <!-- Replace # with your real links -->
+            <a class="btn" href="#contact">Contact</a>
+            <a class="btn-outline" href="https://github.com/maedehdarsaraee" target="_blank" rel="noreferrer">GitHub</a>
+            <a class="btn-outline" href="#" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a class="btn-outline" href="#" target="_blank" rel="noreferrer">Google Scholar</a>
+          </div>
+        </div>
+
+        <section id="about">
+          <h2>About</h2>
+          <p>
+            I’m a cheminformatician working on machine learning for molecular representation and target prediction,
+            with experience building web-based tools for polypharmacology analysis.
+          </p>
+          <p class="muted">
+            Current focus: deep learning models trained on ChEMBL data, fingerprint-based representations, and practical tools for discovery workflows.
+          </p>
+        </section>
+
+        <div class="grid">
+          <section class="tile" id="projects">
+            <h2 style="margin:0 0 8px;">Selected Projects</h2>
+            <ul>
+              <li><strong>PPB3</strong> — Polypharmacology Browser (Flask web app + DNN models)</li>
+              <li>Target prediction with multiple fingerprints (ECFP, MHFP, RDKit, Fused)</li>
+              <li>Nearest-neighbor search + consensus ranking</li>
+            </ul>
+          </section>
+
+          <section class="tile" id="publications">
+            <h2 style="margin:0 0 8px;">Publications</h2>
+            <ul>
+              <li>Add your key paper / preprint here</li>
+              <li>Add another publication (journal, year)</li>
+              <li>Posters, talks, chapters</li>
+            </ul>
+          </section>
+
+          <section class="tile" id="contact">
+            <h2 style="margin:0 0 8px;">Contact</h2>
+            <p class="muted" style="margin:0 0 8px;">Best ways to reach me:</p>
+            <ul>
+              <li>Email: <a href="mailto:YOUR_EMAIL" style="color: var(--text);">YOUR_EMAIL</a></li>
+              <li>GitHub: <a href="https://github.com/maedehdarsaraee" style="color: var(--text);">maedehdarsaraee</a></li>
+              <li>LinkedIn: <a href="#" style="color: var(--text);">your-link</a></li>
+            </ul>
+          </section>
+        </div>
+      </main>
+
+      <footer>
+        © <span id="y"></span> Maedeh Darsaraee
+      </footer>
+    </div>
+
+    <script>
+      document.getElementById("y").textContent = new Date().getFullYear();
+    </script>
   </body>
 </html>
