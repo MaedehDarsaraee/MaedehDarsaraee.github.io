@@ -33,7 +33,6 @@
         padding: 22px 0;
       }
       .brand{ font-weight:800; letter-spacing:.2px; }
-
       nav a{
         color: var(--muted);
         text-decoration:none;
@@ -54,9 +53,6 @@
         border-radius: 14px;
         text-decoration:none;
         font-weight:700;
-        border: 0;
-        cursor: pointer;
-        font: inherit;
       }
       .btn{
         background: linear-gradient(135deg, var(--accent), var(--accent2));
@@ -98,47 +94,46 @@
 
       footer{ padding: 28px 0 40px; color: var(--muted); }
 
-      /* ---------- Modal ---------- */
+      @media (max-width: 760px){
+        header{ flex-direction:column; align-items:flex-start; gap:10px; }
+        nav a{ margin-left:0; margin-right: 8px; }
+        .grid{ grid-template-columns: 1fr; }
+      }
+
+      /* -------- Modal (safe: never shown unless .is-open) -------- */
       .modal{
         position: fixed;
         inset: 0;
-        display: none;              /* hidden by default */
-        place-items: center;
-        padding: 18px;
-        z-index: 1000;
+        display: none;
+        z-index: 9999;
       }
-      .modal[aria-hidden="false"]{ display: grid; }
-
-      .modal-backdrop{
-        position:absolute;
-        inset:0;
+      .modal.is-open{ display: grid; place-items: center; }
+      .modal .backdrop{
+        position: absolute;
+        inset: 0;
         background: rgba(0,0,0,.55);
         backdrop-filter: blur(8px);
       }
-
-      .modal-panel{
+      .modal .panel{
         position: relative;
         width: min(720px, 96vw);
         border: 1px solid var(--border);
         background: rgba(10,14,26,.78);
         border-radius: 22px;
-        padding: 18px 18px 16px;
+        padding: 18px;
         box-shadow: 0 18px 60px rgba(0,0,0,.45);
       }
-
-      .modal-header{
+      .modal .head{
         display:flex;
         align-items:center;
         justify-content:space-between;
         gap: 10px;
         margin-bottom: 6px;
       }
-      .modal-title{
+      .modal .head h2{
         margin: 0;
         font-size: 1.2rem;
-        letter-spacing: .1px;
       }
-
       .icon-btn{
         width: 40px;
         height: 40px;
@@ -148,4 +143,144 @@
         border: 1px solid var(--border);
         background: rgba(255,255,255,.04);
         color: var(--text);
-        c
+        cursor: pointer;
+      }
+      .icon-btn:hover{ border-color: rgba(255,255,255,.22); }
+      .modal .body{
+        margin-top: 8px;
+        padding-top: 10px;
+        border-top: 1px solid rgba(255,255,255,.08);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <div class="brand">Maedeh Darsaraee</div>
+        <nav>
+          <!-- About now opens modal -->
+          <a href="#" id="openAbout">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#publications">Publications</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </header>
+
+      <main>
+        <div class="hero">
+          <h1>Maedeh Darsaraee</h1>
+          <p class="lead">Cheminformatics • Target prediction •  Machine learning</p>
+          <div class="btns">
+            <a class="btn" href="#contact">Contact</a>
+            <a class="btn-outline" href="https://github.com/maedehdarsaraee" target="_blank" rel="noreferrer">GitHub</a>
+            <a class="btn-outline" href="#" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a class="btn-outline" href="#" target="_blank" rel="noreferrer">Google Scholar</a>
+          </div>
+        </div>
+
+        <!-- Keep your original About section visible on page (optional, but safe) -->
+        <section id="about">
+          <h2>About</h2>
+          <p>
+            I’m a cheminformatician working on machine learning for molecular representation and target prediction,
+            with experience building web-based tools for polypharmacology analysis.
+          </p>
+          <p class="muted">
+            Current focus: deep learning models trained on ChEMBL data, fingerprint-based representations, and practical tools for discovery workflows.
+          </p>
+        </section>
+
+        <div class="grid">
+          <section class="tile" id="projects">
+            <h2 style="margin:0 0 8px;">Selected Projects</h2>
+            <ul>
+              <li><strong>PPB3</strong> — Polypharmacology Browser (Flask web app + DNN models)</li>
+              <li>Target prediction with multiple fingerprints (ECFP, MHFP, RDKit, Fused)</li>
+              <li>Nearest-neighbor search</li>
+            </ul>
+          </section>
+
+          <section class="tile" id="publications">
+            <h2 style="margin:0 0 8px;">Publications</h2>
+            <ul>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </section>
+
+          <section class="tile" id="contact">
+            <h2 style="margin:0 0 8px;">Contact</h2>
+            <p class="muted" style="margin:0 0 8px;">Best ways to reach me:</p>
+            <ul>
+              <li>Email: <a href="mailto:" style="color: var(--text);"></a></li>
+              <li>GitHub: <a href="https://github.com/maedehdarsaraee" style="color: var(--text);">maedehdarsaraee</a></li>
+              <li>LinkedIn: <a href="https://www.linkedin.com/in/maedeh-darsaraee-1b626b1a0/" style="color: var(--text);"></a></li>
+            </ul>
+          </section>
+        </div>
+      </main>
+
+      <footer>
+        © <span id="y"></span> Maedeh Darsaraee
+      </footer>
+    </div>
+
+    <!-- About Modal -->
+    <div class="modal" id="aboutModal" aria-hidden="true">
+      <div class="backdrop" id="aboutBackdrop" aria-hidden="true"></div>
+      <div class="panel" role="dialog" aria-modal="true" aria-labelledby="aboutTitle">
+        <div class="head">
+          <h2 id="aboutTitle">About</h2>
+          <button class="icon-btn" type="button" id="closeAbout" aria-label="Close">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+        <div class="body">
+          <p>
+            I’m a cheminformatician working on machine learning for molecular representation and target prediction,
+            with experience building web-based tools for polypharmacology analysis.
+          </p>
+          <p class="muted">
+            Current focus: deep learning models trained on ChEMBL data, fingerprint-based representations, and practical tools for discovery workflows.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.getElementById("y").textContent = new Date().getFullYear();
+
+      const openBtn = document.getElementById("openAbout");
+      const modal = document.getElementById("aboutModal");
+      const closeBtn = document.getElementById("closeAbout");
+      const backdrop = document.getElementById("aboutBackdrop");
+
+      function openModal(e){
+        if (e) e.preventDefault();
+        modal.classList.add("is-open");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+        closeBtn.focus();
+      }
+
+      function closeModal(){
+        modal.classList.remove("is-open");
+        modal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+        openBtn.focus();
+      }
+
+      openBtn.addEventListener("click", openModal);
+      closeBtn.addEventListener("click", closeModal);
+      backdrop.addEventListener("click", closeModal);
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && modal.classList.contains("is-open")) closeModal();
+      });
+    </script>
+  </body>
+</html>
