@@ -1,315 +1,360 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Maedeh Darsaraee</title>
-    <style>
-      :root{
-        --bg:#0b0f19;
-        --card: rgba(255,255,255,.04);
-        --border: rgba(255,255,255,.12);
-        --text:#e9eefc;
-        --muted:#a9b5d3;
-        --accent:#7aa2ff;
-        --accent2:#7effc4;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maedeh (Maddie) Darsaraee</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231f7a72'/%3E%3Cg stroke='%23ffffff' stroke-width='2'%3E%3Cline x1='16' y1='16' x2='16' y2='8'/%3E%3Cline x1='16' y1='16' x2='9' y2='23'/%3E%3Cline x1='16' y1='16' x2='23' y2='23'/%3E%3C/g%3E%3Cg fill='%23ffffff'%3E%3Ccircle cx='16' cy='16' r='3.2'/%3E%3Ccircle cx='16' cy='8' r='2.7'/%3E%3Ccircle cx='9' cy='23' r='2.7'/%3E%3Ccircle cx='23' cy='23' r='2.7'/%3E%3C/g%3E%3C/svg%3E" />
+  <meta name="description" content="Maedeh (Maddie) Darsaraee — cheminformatician working on machine learning for molecular representation and target prediction at the University of Bern." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #ffffff;
+      --fg: #1a1d21;
+      --muted: #646b73;
+      --line: #ececef;
+      --accent: #1f7a72;        /* refined teal */
+      --accent-soft: #e7f2f1;
+      --tag-bg: #f3f5f6;
+      --maxw: 700px;
+    }
+    :root[data-theme="dark"] {
+      --bg: #15171a;
+      --fg: #e6e8eb;
+      --muted: #969ca3;
+      --line: #262a2f;
+      --accent: #4db6ac;
+      --accent-soft: #19332f;
+      --tag-bg: #1e2227;
+    }
 
-      *{ box-sizing:border-box; }
-      html,body{ margin:0; padding:0; }
-      body{
-        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-        background:
-          radial-gradient(900px 500px at 20% 10%, rgba(122,162,255,.18), transparent 60%),
-          radial-gradient(900px 500px at 80% 0%, rgba(126,255,196,.12), transparent 55%),
-          var(--bg);
-        color: var(--text);
-        line-height: 1.6;
-      }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
 
-      .container{ width:min(980px, 92vw); margin:0 auto; }
-      header{
-        display:flex; align-items:center; justify-content:flex-end;
-        padding: 22px 0;
-      }
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: "EB Garamond", Georgia, "Times New Roman", serif;
+      font-size: 19px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
 
-      nav a{
-        color: var(--muted);
-        text-decoration:none;
-        margin-left: 14px;
-        padding: 8px 10px;
-        border-radius: 12px;
-      }
-      nav a:hover{ color: var(--text); background: rgba(255,255,255,.05); }
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 60px 24px 100px; }
 
-      .hero{ padding: 26px 0 10px; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    strong { font-weight: 700; color: var(--fg); }
 
-      /* Avatar + title row */
-      .hero-top{
-        display:flex;
-        align-items:center;
-        gap: 14px;
-        margin-bottom: 10px;
-      }
-      .avatar{
-        width: 92px;
-        height: 92px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 1px solid var(--border);
-        box-shadow: 0 10px 30px rgba(0,0,0,.35);
-        background: rgba(255,255,255,.06);
-      }
+    /* ---------- Header ---------- */
+    header {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      margin-bottom: 30px;
+    }
+    .header-text { flex: 1; min-width: 0; }
+    h1 {
+      font-size: 33px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin: 0 0 4px;
+      line-height: 1.12;
+    }
+    .role { color: var(--muted); margin: 0; font-size: 18px; font-style: italic; }
+    .photo {
+      width: 96px; height: 96px; flex-shrink: 0;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid var(--line);
+      box-shadow: 0 1px 10px rgba(0,0,0,0.06);
+    }
 
-      h1{ margin:0 0 8px; font-size: clamp(2rem, 4vw, 3rem); }
-      .lead{ margin:0; color: var(--muted); font-size: 1.05rem; }
+    /* ---------- Social + theme ---------- */
+    .meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 42px;
+      flex-wrap: wrap;
+    }
+    .social { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; }
+    .social a { display: inline-flex; transition: opacity 0.15s ease; }
+    .social a:hover { opacity: 0.72; text-decoration: none; }
+    .social svg { width: 22px; height: 22px; display: block; }
+    .ic-email   svg { fill: #ea4335; }   /* email red   */
+    .ic-github  svg { fill: var(--fg); }  /* theme-aware */
+    .ic-linkedin svg { fill: #0a66c2; }  /* LinkedIn blue */
+    .ic-scholar svg { fill: #4285f4; }   /* Scholar blue */
+    #theme-toggle {
+      background: none; border: 1px solid var(--line); color: var(--fg);
+      width: 32px; height: 32px; border-radius: 50%;
+      font-size: 15px; cursor: pointer; line-height: 1;
+      display: inline-flex; align-items: center; justify-content: center;
+      transition: border-color 0.15s ease, color 0.15s ease;
+    }
+    #theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
 
-      .btns{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 14px; }
-      .btn, .btn-outline{
-        display:inline-block;
-        padding: 10px 14px;
-        border-radius: 14px;
-        text-decoration:none;
-        font-weight:700;
-      }
-      .btn{
-        background: linear-gradient(135deg, var(--accent), var(--accent2));
-        color:#07101f;
-      }
-      .btn-outline{
-        border:1px solid var(--border);
-        color: var(--text);
-        background: rgba(255,255,255,.03);
-      }
-      .btn-outline:hover{ border-color: rgba(255,255,255,.22); }
+    /* ---------- About block ---------- */
+    .about {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 4px 20px;
+      margin: 0 0 20px;
+    }
+    .about dt { color: var(--muted); }
+    .about dd { margin: 0; }
+    .now {
+      margin: 0 0 52px;
+      padding: 14px 18px;
+      background: var(--accent-soft);
+      border-radius: 8px;
+      font-size: 17.5px;
+    }
+    .now-label { color: var(--accent); font-weight: 700; }
+    .now-date { color: var(--muted); font-size: 13px; }
 
-      section{
-        margin-top: 16px;
-        padding: 18px;
-        border: 1px solid var(--border);
-        background: var(--card);
-        border-radius: 18px;
-        backdrop-filter: blur(6px);
-      }
-      section h2{ margin:0 0 8px; font-size: 1.2rem; }
-      p{ margin: 8px 0; color: var(--text); }
-      .muted{ color: var(--muted); }
+    /* ---------- Sections ---------- */
+    section { margin-bottom: 48px; }
+    h2 {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      font-weight: 600;
+      margin: 0 0 18px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--line);
+    }
+    p { margin: 0 0 14px; }
+    .lead { font-size: 20px; }
+    .muted { color: var(--muted); }
 
-      .grid{
-        margin-top: 16px;
-        display:grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 12px;
-      }
-      .tile{
-        border:1px solid var(--border);
-        background: rgba(255,255,255,.03);
-        border-radius: 18px;
-        padding: 16px;
-      }
-      .tile ul{ margin: 8px 0 0; padding-left: 18px; color: var(--muted); }
+    /* ---------- News ---------- */
+    .news { list-style: none; margin: 0; padding: 0; }
+    .news li { display: flex; gap: 16px; margin-bottom: 11px; }
+    .news .date {
+      flex-shrink: 0; width: 86px; color: var(--muted);
+      font-variant-numeric: tabular-nums; font-size: 14px; padding-top: 1px;
+    }
 
-      footer{ padding: 28px 0 40px; color: var(--muted); }
+    /* ---------- Projects ---------- */
+    .item { margin-bottom: 24px; }
+    .item:last-child { margin-bottom: 0; }
+    .item-title { font-weight: 600; font-size: 19px; }
+    .item-desc { color: var(--muted); margin: 3px 0 8px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag {
+      font-size: 12px; color: var(--muted);
+      background: var(--tag-bg); border-radius: 5px; padding: 2px 9px;
+    }
 
-      @media (max-width: 760px){
-        header{ justify-content:flex-start; }
-        .hero-top{ align-items:flex-start; }
-        nav a{ margin-left:0; margin-right: 8px; }
-        .grid{ grid-template-columns: 1fr; }
-      }
+    /* ---------- Publications ---------- */
+    .pub { margin-bottom: 20px; padding-left: 16px; position: relative; }
+    .pub::before {
+      content: ""; position: absolute; left: 0; top: 9px;
+      width: 5px; height: 5px; border-radius: 50%; background: var(--accent);
+    }
+    .pub .year { color: var(--muted); font-variant-numeric: tabular-nums; }
+    .badge {
+      display: inline-block; font-size: 11px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.05em;
+      color: var(--accent); background: var(--accent-soft);
+      border-radius: 4px; padding: 0 6px; margin-left: 2px;
+      vertical-align: 1px;
+    }
 
-      /* -------- About Modal -------- */
-      .modal{
-        position: fixed;
-        inset: 0;
-        display: none;
-        z-index: 9999;
-      }
-      .modal.is-open{ display: grid; place-items: center; }
-      .modal .backdrop{
-        position: absolute;
-        inset: 0;
-        background: rgba(0,0,0,.55);
-        backdrop-filter: blur(8px);
-      }
-      .modal .panel{
-        position: relative;
-        width: min(720px, 96vw);
-        border: 1px solid var(--border);
-        background: rgba(10,14,26,.78);
-        border-radius: 22px;
-        padding: 18px;
-        box-shadow: 0 18px 60px rgba(0,0,0,.45);
-      }
-      .modal .head{
-        display:flex;
-        align-items:center;
-        justify-content:space-between;
-        gap: 10px;
-        margin-bottom: 6px;
-      }
-      .modal .head h2{
-        margin: 0;
-        font-size: 1.2rem;
-      }
-      .icon-btn{
-        width: 40px;
-        height: 40px;
-        display:grid;
-        place-items:center;
-        border-radius: 14px;
-        border: 1px solid var(--border);
-        background: rgba(255,255,255,.04);
-        color: var(--text);
-        cursor: pointer;
-      }
-      .icon-btn:hover{ border-color: rgba(255,255,255,.22); }
-      .modal .body{
-        margin-top: 8px;
-        padding-top: 10px;
-        border-top: 1px solid rgba(255,255,255,.08);
-      }
-    </style>
-  </head>
+    footer {
+      margin-top: 60px; padding-top: 22px;
+      border-top: 1px solid var(--line);
+      color: var(--muted); font-size: 13px;
+    }
 
-  <body>
-    <div class="container">
-      <header>
-        <nav>
-          <a href="#" id="openAbout">About</a>
-          <a href="#projects">Projects</a>
-          <a href="#publications">Publications</a>
-          <a href="#contact">Contact</a>
-        </nav>
-      </header>
+    @media (max-width: 480px) {
+      header { gap: 18px; }
+      .photo { width: 76px; height: 76px; }
+      h1 { font-size: 23px; }
+      .about { grid-template-columns: 80px 1fr; }
+      .news li { flex-direction: column; gap: 1px; }
+      .news .date { width: auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
 
-      <main>
-        <div class="hero">
-          <div class="hero-top">
-            <!-- IMPORTANT:
-                 Put your image file in the SAME folder as this HTML and name it: profile.png
-                 (Because "Downloads" is not a valid website path.)
-            -->
-            <img class="avatar" src="profile.png.jpg" alt="Maedeh Darsaraee" />
-            <div>
-              <h1>Maedeh Darsaraee</h1>
-              <p class="lead">Cheminformatics • Target prediction •  Machine learning</p>
-            </div>
-          </div>
+    <header>
+      <div class="header-text">
+        <h1>Maedeh (Maddie) Darsaraee</h1>
+        <p class="role">Cheminformatics &middot; AI in drug discovery &middot; Machine learning &middot; Target prediction</p>
+      </div>
+      <img class="photo" src="profile.png.jpg" alt="Maedeh Darsaraee"
+           onerror="this.style.display='none'" />
+    </header>
 
-          <div class="btns">
-            <a class="btn" href="#contact">Contact</a>
-            <a class="btn-outline" href="https://github.com/maedehdarsaraee" target="_blank" rel="noreferrer">GitHub</a>
-            <a class="btn-outline" href="https://www.linkedin.com/in/maedeh-darsaraee-1b626b1a0/" target="_blank" rel="noreferrer">LinkedIn</a>
-            <a class="btn-outline" href="https://scholar.google.com/citations?user=y2MbWUcAAAAJ&hl=en" target="_blank" rel="noreferrer">Google Scholar</a>
-          </div>
-        </div>
-
-        <section id="about">
-          <h2>About</h2>
-          <p>
-            I’m a cheminformatician working on machine learning for molecular representation and target prediction,
-            with experience building web-based tools for polypharmacology analysis.
-          </p>
-          <p class="muted">
-            Current focus: deep learning models trained on ChEMBL data, fingerprint-based representations, and practical tools for discovery workflows.
-          </p>
-          <p class="muted" style="margin-top:12px;">
-            Tip: Click “About” in the top menu to open this as a dialog.
-          </p>
-        </section>
-
-        <div class="grid">
-          <section class="tile" id="projects">
-            <h2 style="margin:0 0 8px;">Selected Projects</h2>
-            <ul>
-              <li><strong>PPB3</strong> — Polypharmacology Browser (Flask web app + DNN models)</li>
-              <li>Target prediction with multiple fingerprints (ECFP, MHFP, RDKit, Fused)</li>
-              <li>Nearest-neighbor search</li>
-            </ul>
-          </section>
-
-          <section class="tile" id="publications">
-            <h2 style="margin:0 0 8px;">Publications</h2>
-            <ul>
-              <li></li>
-              <li></li>
-              <li></li>
-            </ul>
-          </section>
-
-          <section class="tile" id="contact">
-            <h2 style="margin:0 0 8px;">Contact</h2>
-            <p class="muted" style="margin:0 0 8px;">Best ways to reach me:</p>
-            <ul>
-              <li>Email: <a href="mailto:maedeh.darsaraee@unibe.ch" style="color: var(--text);">maedeh.darsaraee@unibe.ch</a></li>
-              <li>GitHub: <a href="https://github.com/maedehdarsaraee" style="color: var(--text);">maedehdarsaraee</a></li>
-              <li>LinkedIn: <a href="https://www.linkedin.com/in/maedeh-darsaraee-1b626b1a0/" style="color: var(--text);">maedeh-darsaraee-1b626b1a0</a></li>
-              <li>Google Scholar: <a href="https://scholar.google.com/citations?user=y2MbWUcAAAAJ&hl=en" style="color: var(--text);">Profile</a></li>
-            </ul>
-          </section>
-        </div>
-      </main>
-
-      <footer>
-        © <span id="y"></span> Maedeh Darsaraee
-      </footer>
+    <div class="meta-row">
+      <nav class="social">
+        <a class="ic-email" href="mailto:maedeh.darsaraee@unibe.ch" aria-label="Email" title="Email">
+          <svg viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </a>
+        <a class="ic-github" href="https://github.com/MaedehDarsaraee" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+          <svg viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.014 2.898-.014 3.293 0 .322.216.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        </a>
+        <a class="ic-linkedin" href="https://www.linkedin.com/in/maedeh-maddie-darsaraee-1b626b1a0" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+          <svg viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a class="ic-scholar" href="https://scholar.google.com/citations?user=y2MbWUcAAAAJ&hl=en" target="_blank" rel="noopener" aria-label="Google Scholar" title="Google Scholar">
+          <svg viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M5.242 13.769 0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg>
+        </a>
+      </nav>
+      <button id="theme-toggle" aria-label="Toggle light / dark theme" title="Toggle theme">&#9680;</button>
     </div>
 
-    <!-- About Modal -->
-    <div class="modal" id="aboutModal" aria-hidden="true">
-      <div class="backdrop" id="aboutBackdrop" aria-hidden="true"></div>
-      <div class="panel" role="dialog" aria-modal="true" aria-labelledby="aboutTitle">
-        <div class="head">
-          <h2 id="aboutTitle">About</h2>
-          <button class="icon-btn" type="button" id="closeAbout" aria-label="Close">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-          </button>
+    <!-- ---------- About ---------- -->
+    <p class="lead">
+      Hi there! I'm Maddie, a PhD researcher in cheminformatics in the
+      <a href="https://gdb.unibe.ch/" target="_blank" rel="noopener">Reymond group</a>
+      at the University of Bern.
+    </p>
+    <p>
+      I work on machine learning for drug discovery, building models and
+      open-source tools that predict how small molecules interact with their
+      biological targets. I also design antimicrobial and anticancer peptides and
+      model their properties. Before Bern, I studied analytical chemistry (MSc,
+      Tarbiat Modares University) and pure chemistry (BSc, Guilan University).
+    </p>
+    <p>
+      Outside the lab, you'll find me doing portrait and nature photography, hiking
+      in the Swiss Alps, or hosting my loved ones with homemade Persian food.
+    </p>
+
+    <!-- ---------- Projects ---------- -->
+    <section id="projects">
+      <h2>Core PhD Projects</h2>
+
+      <div class="item">
+        <div class="item-title">
+          <a href="https://ppb3.gdb.tools/" target="_blank" rel="noopener">PPB3 &middot; Polypharmacology Browser</a>
         </div>
-        <div class="body">
-          <p>
-            I’m a cheminformatician working on machine learning for molecular representation and target prediction,
-            with experience building web-based tools for polypharmacology analysis.
-          </p>
-          <p class="muted">
-            Current focus: deep learning models trained on ChEMBL data, fingerprint-based representations, and practical tools for discovery workflows.
-          </p>
+        <div class="item-desc">
+          Open-source web tool that predicts protein targets for small molecules
+          across 8,000+ targets, using deep neural networks trained on ChEMBL.
         </div>
       </div>
-    </div>
 
-    <script>
-      document.getElementById("y").textContent = new Date().getFullYear();
+      <div class="item">
+        <div class="item-title">
+          <a href="https://ppb4.gdb.tools/" target="_blank" rel="noopener">PPB4 &middot; Polypharmacology Browser</a>
+        </div>
+        <div class="item-desc">
+          Predict active and inactive targets across ~8,000 ChEMBL targets from a
+          chemical structure.
+        </div>
+      </div>
 
-      const openBtn = document.getElementById("openAbout");
-      const modal = document.getElementById("aboutModal");
-      const closeBtn = document.getElementById("closeAbout");
-      const backdrop = document.getElementById("aboutBackdrop");
+      <div class="item">
+        <div class="item-title">
+          <a href="https://github.com/reymond-group/ln65-stereoisomer-ML" target="_blank" rel="noopener">Peptide design &amp; property prediction</a>
+        </div>
+        <div class="item-desc">
+          Designing antimicrobial and anticancer peptides and building
+          machine-learning models to predict their biological properties, such as
+          antibacterial activity, hemolysis, and cytotoxicity, to guide synthesis
+          and optimization.
+        </div>
+      </div>
+    </section>
 
-      function openModal(e){
-        if (e) e.preventDefault();
-        modal.classList.add("is-open");
-        modal.setAttribute("aria-hidden", "false");
-        document.body.style.overflow = "hidden";
-        closeBtn.focus();
+    <!-- ---------- Research ---------- -->
+    <section id="research">
+      <h2>Research</h2>
+
+      <div class="pub">
+        <span class="year">2026</span> &middot;
+        Machine-Learning Guided Exploration of Antimicrobial Peptide Stereoisomers.
+        <span class="badge">submitted</span>
+        <br />
+        <span class="muted">B Rufer, <strong>M Darsaraee</strong>, M Orsi, BH Gan,
+        S Javor, JL Reymond. Journal of Medicinal Chemistry.</span>
+      </div>
+
+      <div class="pub">
+        <span class="year">2026</span> &middot;
+        Predicting Active and Inactive Targets of Small Molecules from ChEMBL Data
+        Using the Polypharmacology Browser PPB4.
+        <span class="badge">submitted</span>
+        <br />
+        <span class="muted"><strong>M Darsaraee</strong>, JL Reymond. ChemMedChem.</span>
+      </div>
+
+      <div class="pub">
+        <span class="year">2026</span> &middot;
+        <a href="https://doi.org/10.1021/acs.jcim.6c00299" target="_blank" rel="noopener">Polypharmacology
+        Browser PPB3: A Web-Based Deep Learning Tool for Target Prediction Using
+        ChEMBL Data.</a>
+        <br />
+        <span class="muted"><strong>M Darsaraee</strong>, S Javor, JL Reymond.
+        Journal of Chemical Information and Modeling, 66(5), 2466&ndash;2473.</span>
+      </div>
+
+      <div class="pub">
+        <span class="year">2026</span> &middot;
+        <a href="https://doi.org/10.1002/hlca.202500207" target="_blank" rel="noopener">Spirocyclic
+        Diamine Scaffolds for Medicinal Chemistry.</a>
+        <br />
+        <span class="muted">A Carrel, A Flores, <strong>M Darsaraee</strong>, JL Reymond.
+        Helvetica Chimica Acta, 109(1), e00207.</span>
+      </div>
+
+      <div class="pub">
+        <span class="year">2025</span> &middot;
+        <a href="https://doi.org/10.1002/9781394182862.ch17" target="_blank" rel="noopener">Predicting
+        Polypharmacology with Web-Based Tools.</a>
+        <br />
+        <span class="muted"><strong>M Darsaraee</strong>, S Javor, JL Reymond.
+        In <em>Polypharmacology: Strategies for Multi-Target Drug Discovery</em>
+        (Ch. 17), 223&ndash;235. Wiley.</span>
+      </div>
+
+      <div class="pub">
+        <span class="year">2024</span> &middot;
+        <a href="https://doi.org/10.1080/07391102.2023.2248255" target="_blank" rel="noopener">General
+        structure&ndash;activity/selectivity relationship patterns for the
+        inhibitors of the chemokine receptors (CCR1/CCR2/CCR4/CCR5) with
+        application for virtual screening of PubChem database.</a>
+        <br />
+        <span class="muted"><strong>M Darsaraee</strong>, S Kaveh,
+        A Mani-Varnosfaderani, MS Neiband. Journal of Biomolecular Structure and
+        Dynamics, 42(17), 8781&ndash;8799.</span>
+      </div>
+    </section>
+
+    <footer>
+      &copy; 2026 Maedeh Darsaraee &middot; University of Bern &middot;
+      built with plain HTML &amp; CSS.
+    </footer>
+
+  </div>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var saved = localStorage.getItem("theme");
+      if (saved) {
+        root.setAttribute("data-theme", saved);
+      } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        root.setAttribute("data-theme", "dark");
       }
-
-      function closeModal(){
-        modal.classList.remove("is-open");
-        modal.setAttribute("aria-hidden", "true");
-        document.body.style.overflow = "";
-        openBtn.focus();
-      }
-
-      openBtn.addEventListener("click", openModal);
-      closeBtn.addEventListener("click", closeModal);
-      backdrop.addEventListener("click", closeModal);
-
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && modal.classList.contains("is-open")) closeModal();
+      document.getElementById("theme-toggle").addEventListener("click", function () {
+        var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+        root.setAttribute("data-theme", next);
+        localStorage.setItem("theme", next);
       });
-    </script>
-  </body>
+    })();
+  </script>
+</body>
 </html>
